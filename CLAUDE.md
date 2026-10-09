@@ -9,7 +9,7 @@ Personal website for Kristofer Pelchat, live at [kristoferpelchat.com](https://k
 - A static site with no build step, package manager or framework:
   - `index.html`: markup and content
   - `styles.css`: all styles (design tokens are in `:root`; phone tweaks are in the `/* phones */` block)
-  - `script.js`: header hide/show, mobile menu, scroll-spy, scroll reveals, hero parallax, stat count-ups, work preview, contact form
+  - `script.js`: header hide/show, mobile menu, scroll-spy, scroll reveals, stat count-ups, work preview, contact form
 - It's deployed with Cloudflare Pages, and Cloudflare also hosts the domain. There's no Worker; Pages is the only Cloudflare integration. Pushing to `main` deploys to production, and every other branch gets a preview deployment at `https://<branch>.site-cq6.pages.dev`.
 - To preview locally, open `index.html` in a browser or run `python3 -m http.server` from the repo root.
 

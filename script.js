@@ -59,19 +59,6 @@
     reveals.forEach(function (el) { ro.observe(el); });
   }
 
-  /* hero: slow parallax on the background trace */
-  var heroBg = document.querySelector('.hero-bg');
-  if (!reduced) {
-    var hero = heroBg.parentElement, raf = null;
-    var parallax = function () {
-      raf = null;
-      var r = hero.getBoundingClientRect();
-      var p = Math.max(-1, Math.min(1, -r.top / (r.height || 1)));
-      heroBg.style.transform = 'translate3d(0,' + (p * 70).toFixed(1) + 'px,0)';
-    };
-    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(parallax); }, { passive: true });
-  }
-
   /* stat count-ups */
   if (!reduced) {
     document.querySelectorAll('[data-countup]').forEach(function (el) {

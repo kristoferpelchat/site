@@ -1,232 +1,200 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Kristofer Pelchat</title>
+<meta name="description" content="VP of Engineering in Brookline, NH. 26 years building the teams and platforms that ship, from regulated healthcare SaaS to agentic AI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: one editorial column on a deep-marine field; a mono "instrument readout" rail labels each section. Dark-first. */
-:root {
-  --bg: #0d151c;        /* deep marine */
-  --surface: #131f29;
-  --fg: #e6e9ea;
-  --muted: #8d9ba5;
-  --rule: #24333f;
-  --accent: #c99a52;    /* brass */
-  --accent-ink: #0d151c;
-  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
-  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
-  color-scheme: dark;
-}
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
-  --bg: #eef0ee; --surface: #e3e6e4; --fg: #121a20; --muted: #55636c; --rule: #c6ccca; --accent: #8a5a1c; --accent-ink: #f4f2ec; color-scheme: light; } }
-:root[data-theme="light"] {
-  --bg: #eef0ee; --surface: #e3e6e4; --fg: #121a20; --muted: #55636c; --rule: #c6ccca; --accent: #8a5a1c; --accent-ink: #f4f2ec; color-scheme: light; }
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+</head>
+<body>
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { background: var(--bg); color: var(--fg); font: 400 17px/1.6 var(--body); padding-inline: clamp(16px, 5vw, 64px); }
-a { color: inherit; }
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.wrap { max-width: 1120px; margin-inline: auto; }
-
-/* nav */
-header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--rule); }
-header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
-.mark { font: 800 22px/1 var(--display); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
-.mark span { color: var(--accent); }
-nav ul { display: flex; gap: clamp(14px, 3vw, 32px); list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
-nav a { font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
-nav a:hover { color: var(--fg); }
-
-/* section scaffold */
-section { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 32px; padding-block: clamp(56px, 9vw, 112px); border-bottom: 1px solid var(--rule); }
-.rail { font: 500 12px/1.5 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-top: 6px; }
-.rail b { display: block; color: var(--accent); font-weight: 500; }
-@media (max-width: 760px) { section { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
-
-.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin: 0 0 24px; }
-h1, h2, h3 { font-family: var(--display); text-transform: uppercase; text-wrap: balance; margin: 0; }
-h1 { font-weight: 800; font-size: clamp(48px, 8.4vw, 112px); line-height: .92; letter-spacing: .005em; }
-h1 em { font-style: normal; color: var(--accent); }
-h2 { font-weight: 800; font-size: clamp(36px, 5vw, 60px); line-height: .95; }
-h3 { font-weight: 600; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.05; letter-spacing: .01em; }
-p { max-width: 64ch; margin: 0; }
-.lede { font-size: clamp(18px, 1.6vw, 20px); color: var(--muted); }
-.lede strong { color: var(--fg); font-weight: 500; }
-.stack { display: grid; gap: 28px; }
-
-/* hero */
-.hero { padding-block: clamp(64px, 11vw, 140px); }
-.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; font: 600 13px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--fg); }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.btn:hover { transform: translateY(-1px); }
-.readout { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); margin-top: 8px; }
-.readout div { padding: 18px 16px 0 0; }
-.readout dt { font: 400 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.readout dd { margin: 6px 0 0; font: 800 clamp(30px, 3.4vw, 44px)/1 var(--display); font-variant-numeric: tabular-nums; }
-@media (max-width: 640px) { .readout { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; } }
-
-/* work index */
-.work { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
-.work li { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 8px 24px; padding-block: 28px; border-bottom: 1px solid var(--rule); }
-.work .n { font: 500 13px/1.9 var(--mono); color: var(--accent); font-variant-numeric: tabular-nums; }
-.work .meta { font: 400 12px/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
-.work p { color: var(--muted); margin-top: 10px; font-size: 16px; }
-.work .yr { font: 500 13px/1.9 var(--mono); color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
-@media (max-width: 560px) { .work li { grid-template-columns: 36px minmax(0, 1fr); } .work .yr { grid-column: 2; } }
-
-/* points of view */
-.pov { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule); }
-.pov article { padding: 24px 24px 24px 0; display: grid; gap: 12px; align-content: start; }
-.pov article + article { padding-left: 24px; border-left: 1px solid var(--rule); }
-.pov p { color: var(--muted); font-size: 15px; }
-.pov .tag { font: 400 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
-@media (max-width: 860px) { .pov { grid-template-columns: minmax(0, 1fr); } .pov article + article { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); } }
-
-/* career line */
-.line { list-style: none; margin: 0; padding: 0; display: grid; }
-.line li { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 20px; padding-block: 14px; border-bottom: 1px solid var(--rule); }
-.line .when { font: 400 13px/1.6 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
-.line .what { font-weight: 500; }
-.line .what span { color: var(--muted); font-weight: 400; }
-.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; }
-@media (max-width: 860px) { .about-grid { grid-template-columns: minmax(0, 1fr); } }
-.stackline { font: 400 13px/1.9 var(--mono); color: var(--muted); }
-
-/* contact */
-.contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; }
-@media (max-width: 860px) { .contact-grid { grid-template-columns: minmax(0, 1fr); } }
-.direct { display: grid; gap: 14px; }
-.direct div { display: grid; gap: 2px; }
-.direct dt { font: 400 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.direct dd { margin: 0; font-size: 18px; user-select: all; overflow-wrap: anywhere; }
-.direct dd a { text-decoration-color: var(--accent); text-underline-offset: 4px; user-select: auto; }
-form { display: grid; gap: 16px; background: var(--surface); padding: clamp(20px, 3vw, 32px); border: 1px solid var(--rule); }
-.row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-@media (max-width: 520px) { .row { grid-template-columns: minmax(0, 1fr); } }
-label { display: grid; gap: 6px; font: 400 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-input, select, textarea { font: 400 16px/1.4 var(--body); color: var(--fg); background: var(--bg); border: 1px solid var(--rule); padding: 12px; border-radius: 0; width: 100%; }
-textarea { min-height: 120px; resize: vertical; }
-form .btn { justify-self: start; cursor: pointer; }
-.note { font: 400 12px/1.5 var(--mono); color: var(--muted); }
-#status { font: 400 13px/1.5 var(--mono); color: var(--accent); }
-
-footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 32px 48px; font: 400 12px/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-</style>
-
-<header class="top">
+<header class="top" id="header">
   <div class="wrap">
-    <a class="mark" href="#top">Kristofer <span>Pelchat</span></a>
-    <nav aria-label="Primary"><ul>
+    <a class="mark" href="#top" aria-label="Kristofer Pelchat, back to top">
+      <svg viewBox="0 0 240 240" aria-hidden="true"><g class="g" stroke-width="10" fill="none"><circle cx="120" cy="120" r="96"/><circle cx="120" cy="120" r="56"/></g><line class="l" x1="120" y1="120" x2="196" y2="44" stroke-width="12" stroke-linecap="round"/><circle class="d" cx="120" cy="120" r="18"/></svg>
+      <span aria-hidden="true">Kristofer <span>Pelchat</span></span>
+    </a>
+    <nav class="primary" aria-label="Primary"><ul>
       <li><a href="#work">Work</a></li>
       <li><a href="#pov">Points of view</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul></nav>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
   </div>
 </header>
+<nav class="menu" id="menu" aria-label="Mobile"><ul>
+  <li><a href="#work">Work</a></li>
+  <li><a href="#pov">Points of view</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul></nav>
 
 <main class="wrap" id="top">
   <section class="hero" aria-labelledby="h-hero">
-    <div class="rail"><b>VP Engineering</b>Brookline, NH<br>Remote</div>
+    <svg class="hero-bg" viewBox="0 0 1600 600" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <path class="tangle" pathLength="1" fill="none" stroke-width="1.6" stroke-linecap="round" d="M -80,500 C 120,496 180,486 240,494 C 300,502 330,480 380,490 C 460,506 520,478 600,488 C 700,500 760,474 860,484 C 980,496 1060,470 1160,462 C 1240,456 1290,440 1310,418 C 1350,372 1300,330 1262,360 C 1220,394 1270,446 1336,422 C 1404,398 1396,336 1350,350 C 1310,362 1340,412 1400,398 C 1430,391 1450,380 1466,368"/>
+      <path class="clean" pathLength="1" fill="none" stroke-width="2.4" stroke-linecap="round" d="M 1466,368 C 1540,330 1610,276 1720,190"/>
+      <circle class="dot" cx="1466" cy="368" r="6"/>
+    </svg>
+    <div class="rail" data-reveal><b>VP Engineering</b>Brookline, NH<br>Remote</div>
     <div class="stack">
-      <p class="eyebrow">Engineering leadership &amp; agentic AI</p>
-      <h1 id="h-hero">I build the teams and the platforms that <em>ship.</em></h1>
-      <p class="lede">26 years writing production code and leading the people who write it. Today I run a distributed engineering org across the U.S. and India, and I still spend part of every week in the architecture and the pull requests. <strong>I modernize regulated platforms, tighten delivery, and put AI to work where it actually saves time.</strong></p>
-      <div class="ctas">
-        <a class="btn primary" href="#work">See the work ↓</a>
-        <a class="btn" href="#pov">Read the approach →</a>
+      <p class="eyebrow" data-reveal data-reveal-delay="0">Engineering leadership &amp; agentic AI</p>
+      <h1 id="h-hero" data-reveal data-reveal-delay="100">I build the teams and the platforms that <em>ship.</em></h1>
+      <p class="lede" data-reveal data-reveal-delay="200">26 years writing production code and leading the people who write it. Today I run a distributed engineering org across the U.S. and India, and I still spend part of every week in the architecture and the pull requests. <strong>I modernize regulated platforms, tighten delivery, and put AI to work where it actually saves time.</strong></p>
+      <div class="ctas" data-reveal data-reveal-delay="300">
+        <a class="btn primary" href="#work">See the work <span class="arrow d" aria-hidden="true">↓</span></a>
+        <a class="btn" href="#approach">Read the approach <span class="arrow r" aria-hidden="true">→</span></a>
       </div>
-      <dl class="readout">
-        <div><dt>Years building</dt><dd>26+</dd></div>
-        <div><dt>Deploy frequency</dt><dd>+60%</dd></div>
-        <div><dt>Prod incidents</dt><dd>−90%</dd></div>
+      <dl class="readout" data-reveal data-reveal-delay="400">
+        <div><dt>Years building</dt><dd data-countup>26+</dd></div>
+        <div><dt>Deploy frequency</dt><dd data-countup>+60%</dd></div>
+        <div><dt>Prod incidents</dt><dd data-countup>−90%</dd></div>
         <div><dt>Compliance</dt><dd>SOC 2 · HIPAA</dd></div>
       </dl>
     </div>
   </section>
 
-  <section aria-labelledby="h-approach">
-    <div class="rail"><b>The approach</b>How I work</div>
+  <section id="approach" aria-labelledby="h-approach">
+    <div class="rail" data-reveal><b>The approach</b>How I work</div>
     <div class="stack">
-      <h2 id="h-approach">Leadership with hands on the code.</h2>
-      <p class="lede">Most engineering problems are delivery problems in disguise. I start where the system actually is, with the pipeline, the incident log and the people, then fix the parts that slow everyone down. Infrastructure as code, honest CI/CD, and AI-assisted engineering let a lean team outrun a bigger one.</p>
+      <h2 id="h-approach" data-reveal data-reveal-delay="80">Leadership with hands on the code.</h2>
+      <p class="lede" data-reveal data-reveal-delay="160">Most engineering problems are delivery problems in disguise. I start where the system actually is, with the pipeline, the incident log and the people, then fix the parts that slow everyone down. Infrastructure as code, honest CI/CD, and AI-assisted engineering let a lean team outrun a bigger one.</p>
     </div>
   </section>
 
   <section id="work" aria-labelledby="h-work">
-    <div class="rail"><b>Selected work</b>1999 – 2026</div>
+    <div class="rail" data-reveal><b>Selected work</b>1999 – 2026</div>
     <div class="stack">
-      <h2 id="h-work">Selected work</h2>
-      <ol class="work">
-        <li>
-          <span class="n">01</span>
-          <div>
-            <h3>Agentic QA system</h3>
-            <div class="meta">Agentic AI / TypeScript / Fynn.io</div>
-            <p>An agent that reads acceptance criteria from Jira, writes TestRail cases and generates Playwright end-to-end tests. Requirements become traceable, executable coverage without manual test authoring.</p>
-          </div>
-          <span class="yr">2025–26</span>
-        </li>
-        <li>
-          <span class="n">02</span>
-          <div>
-            <h3>Healthcare SaaS modernization</h3>
-            <div class="meta">Platform / AWS + Terraform / Fynn.io</div>
-            <p>Rebuilt CI/CD governance and DevSecOps automation for SaaS and hybrid mobile products. Deployments up 60%, production incidents down about 90%, SOC 2 Type II and HIPAA ready.</p>
-          </div>
-          <span class="yr">2022–26</span>
-        </li>
-        <li>
-          <span class="n">03</span>
-          <div>
-            <h3>Clinical imaging platform migration</h3>
-            <div class="meta">Life sciences / GitOps / Invicro, a Konica Minolta company</div>
-            <p>Moved a legacy Perl monolith toward containerized AWS services and service-oriented iPACS components. Deployment cycles went from days to hours.</p>
-          </div>
-          <span class="yr">2019–22</span>
-        </li>
-        <li>
-          <span class="n">04</span>
-          <div>
-            <h3>ndau blockchain wallets</h3>
-            <div class="meta">Fintech / React Native / Oneiro</div>
-            <p>Designed and shipped iOS and Android wallets with multi-signature security, plus the web app that gathered addresses for the ndau genesis block.</p>
-          </div>
-          <span class="yr">2018–19</span>
-        </li>
-        <li>
-          <span class="n">05</span>
-          <div>
-            <h3>Clinical trial imaging &amp; monitoring</h3>
-            <div class="meta">Clinical trials / Java + Spring / PAREXEL</div>
-            <p>Architected a medical imaging trial platform with WebSocket links to DICOM viewers, and helped build a Data Driven Monitoring SaaS product.</p>
-          </div>
-          <span class="yr">2013–18</span>
-        </li>
-      </ol>
+      <h2 id="h-work" data-reveal data-reveal-delay="80">Selected work</h2>
+      <div class="work-index" data-reveal data-reveal-delay="160">
+        <ol class="work">
+          <li data-work-row="0" class="is-active">
+            <span class="n">01</span>
+            <div>
+              <h3>Agentic QA system</h3>
+              <div class="meta">Agentic AI / TypeScript / Fynn.io</div>
+              <p>An agent that reads acceptance criteria from Jira, writes TestRail cases and generates Playwright end-to-end tests. Requirements become traceable, executable coverage without manual test authoring.</p>
+            </div>
+            <span class="yr">2025–26</span>
+          </li>
+          <li data-work-row="1">
+            <span class="n">02</span>
+            <div>
+              <h3>Healthcare SaaS modernization</h3>
+              <div class="meta">Platform / AWS + Terraform / Fynn.io</div>
+              <p>Rebuilt CI/CD governance and DevSecOps automation for SaaS and hybrid mobile products. Deployments up 60%, production incidents down about 90%, SOC 2 Type II and HIPAA ready.</p>
+            </div>
+            <span class="yr">2022–26</span>
+          </li>
+          <li data-work-row="2">
+            <span class="n">03</span>
+            <div>
+              <h3>Clinical imaging platform migration</h3>
+              <div class="meta">Life sciences / GitOps / Invicro, a Konica Minolta company</div>
+              <p>Moved a legacy Perl monolith toward containerized AWS services and service-oriented iPACS components. Deployment cycles went from days to hours.</p>
+            </div>
+            <span class="yr">2019–22</span>
+          </li>
+          <li data-work-row="3">
+            <span class="n">04</span>
+            <div>
+              <h3>ndau blockchain wallets</h3>
+              <div class="meta">Fintech / React Native / Oneiro</div>
+              <p>Designed and shipped iOS and Android wallets with multi-signature security, plus the web app that gathered addresses for the ndau genesis block.</p>
+            </div>
+            <span class="yr">2018–19</span>
+          </li>
+          <li data-work-row="4">
+            <span class="n">05</span>
+            <div>
+              <h3>Clinical trial imaging &amp; monitoring</h3>
+              <div class="meta">Clinical trials / Java + Spring / PAREXEL</div>
+              <p>Architected a medical imaging trial platform with WebSocket links to DICOM viewers, and helped build a Data Driven Monitoring SaaS product.</p>
+            </div>
+            <span class="yr">2013–18</span>
+          </li>
+        </ol>
+
+        <div class="preview" aria-hidden="true">
+          <figure class="panel is-active" data-work-panel="0">
+            <svg viewBox="0 0 340 440" preserveAspectRatio="xMidYMid slice">
+              <g stroke-width="1"><line class="dim" x1="0" y1="110" x2="340" y2="110"/><line class="dim" x1="0" y1="220" x2="340" y2="220"/><line class="dim" x1="0" y1="330" x2="340" y2="330"/></g>
+              <text x="36" y="96">CRITERIA</text><text x="136" y="206">CASES</text><text class="on" x="216" y="316">TESTS</text>
+              <line class="mid" x1="56" y1="128" x2="160" y2="238" stroke-width="2"/>
+              <line class="hi" x1="160" y1="238" x2="264" y2="348" stroke-width="2"/>
+              <circle class="soft mid" cx="56" cy="128" r="6" stroke-width="2"/>
+              <circle class="soft hi" cx="160" cy="238" r="9" stroke-width="2"/>
+              <circle class="acc" cx="264" cy="348" r="9"/>
+            </svg>
+            <figcaption>Jira acceptance criteria, resolved into TestRail cases and running Playwright tests.</figcaption>
+          </figure>
+          <figure class="panel" data-work-panel="1">
+            <svg viewBox="0 0 340 440" preserveAspectRatio="xMidYMid slice">
+              <g stroke-width="2"><rect class="soft mid" x="40" y="250" width="40" height="60"/><rect class="soft mid" x="100" y="220" width="40" height="90"/><rect class="soft mid" x="160" y="180" width="40" height="130"/><rect class="soft hi" x="220" y="130" width="40" height="180"/></g>
+              <path class="accs" d="M 40,120 C 120,130 170,250 290,292" fill="none" stroke-width="2" stroke-dasharray="4 6"/>
+              <circle class="acc" cx="290" cy="292" r="7"/>
+              <line class="dim" x1="30" y1="310" x2="310" y2="310" stroke-width="1"/>
+              <text class="on" x="40" y="80">DEPLOYS +60%</text><text x="40" y="350">INCIDENTS −90%</text>
+            </svg>
+            <figcaption>Deploys climb while incidents fall: governance that speeds teams up.</figcaption>
+          </figure>
+          <figure class="panel" data-work-panel="2">
+            <svg viewBox="0 0 340 440" preserveAspectRatio="xMidYMid slice">
+              <rect class="soft mid" x="40" y="140" width="100" height="140" stroke-width="2"/>
+              <g stroke-width="2"><rect class="soft hi" x="200" y="120" width="44" height="44"/><rect class="soft hi" x="256" y="120" width="44" height="44"/><rect class="soft hi" x="200" y="188" width="44" height="44"/><rect class="soft mid" x="256" y="188" width="44" height="44"/><rect class="soft hi" x="200" y="256" width="44" height="44"/><rect class="soft hi" x="256" y="256" width="44" height="44"/></g>
+              <line class="accs" x1="150" y1="210" x2="188" y2="210" stroke-width="2"/>
+              <circle class="acc" cx="188" cy="210" r="5"/>
+              <text x="40" y="112">MONOLITH</text><text class="on" x="200" y="92">SERVICES</text>
+            </svg>
+            <figcaption>A Perl monolith, carved into containerized services. Days to hours.</figcaption>
+          </figure>
+          <figure class="panel" data-work-panel="3">
+            <svg viewBox="0 0 340 440" preserveAspectRatio="xMidYMid slice">
+              <g fill="none" stroke-width="1.5"><path class="mid" d="M 50,120 C 150,120 180,220 250,220"/><path class="mid" d="M 50,220 L 250,220"/><path class="dim" d="M 50,320 C 150,320 180,220 250,220"/></g>
+              <circle class="soft hi" cx="50" cy="120" r="7" stroke-width="2"/><circle class="soft hi" cx="50" cy="220" r="7" stroke-width="2"/><circle class="soft mid" cx="50" cy="320" r="7" stroke-width="2"/>
+              <line class="hi" x1="250" y1="160" x2="250" y2="280" stroke-width="2"/>
+              <circle class="acc" cx="250" cy="220" r="11"/>
+              <text class="on" x="40" y="80">2 OF 3 KEYS</text>
+            </svg>
+            <figcaption>Multi-signature wallets: no single key can move the funds.</figcaption>
+          </figure>
+          <figure class="panel" data-work-panel="4">
+            <svg viewBox="0 0 340 440" preserveAspectRatio="xMidYMid slice">
+              <g fill="none" stroke-width="1.5"><circle class="dim" cx="110" cy="210" r="90"/><circle class="mid" cx="110" cy="210" r="56"/><circle class="hi" cx="110" cy="210" r="22"/></g>
+              <path class="accs" d="M 132,210 C 190,210 210,150 290,150" fill="none" stroke-width="2"/>
+              <circle class="acc" cx="290" cy="150" r="8"/>
+              <text x="40" y="350">DICOM</text><text class="on" x="216" y="120">VIEWER</text>
+            </svg>
+            <figcaption>Imaging trial data streamed live to DICOM viewers over WebSockets.</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="pov" aria-labelledby="h-pov">
-    <div class="rail"><b>Points of view</b>Writing</div>
+    <div class="rail" data-reveal><b>Points of view</b>Writing</div>
     <div class="stack">
-      <h2 id="h-pov">Points of view</h2>
+      <h2 id="h-pov" data-reveal data-reveal-delay="80">Points of view</h2>
       <div class="pov">
-        <article>
+        <article data-reveal data-reveal-delay="120">
           <span class="tag">Agentic AI · Coming soon</span>
           <h3>Agents belong in the pipeline, not the demo</h3>
           <p>What it took to turn Jira tickets into running Playwright tests, and where the agent still needs a human.</p>
         </article>
-        <article>
+        <article data-reveal data-reveal-delay="220">
           <span class="tag">Delivery · Coming soon</span>
           <h3>Ship more, break less</h3>
           <p>How CI/CD governance raised deploy frequency 60% while cutting incidents by nine tenths.</p>
         </article>
-        <article>
+        <article data-reveal data-reveal-delay="320">
           <span class="tag">Leadership · Coming soon</span>
           <h3>The hands-on VP</h3>
           <p>Why staying in the code makes a VP faster at unblocking teams, and how to do it without becoming the bottleneck.</p>
@@ -236,15 +204,15 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   </section>
 
   <section id="about" aria-labelledby="h-about">
-    <div class="rail"><b>About</b>Signal to software</div>
+    <div class="rail" data-reveal><b>About</b>Signal to software</div>
     <div class="about-grid">
       <div class="stack">
-        <h2 id="h-about">From sonar benches to cloud platforms.</h2>
-        <p class="lede">I started as an FCC-licensed technician at Raytheon Marine, repairing sonar, Loran C and GPS gear. That habit of tracing a fault to its source never left. Since then I've built e-learning APIs, clinical trial platforms, blockchain wallets and healthcare SaaS, and taught the MERN stack to career-changers at UNH and Penn.</p>
-        <p class="stackline">TypeScript · Node · React / React Native · Java / Spring · Python · AWS · GCP · Terraform · Docker / Kubernetes · GitHub Actions · Playwright · OpenAI · Anthropic</p>
-        <p class="stackline">B.S. Computer Science, Rivier University · A.S. Computer Engineering, NH Technical College</p>
+        <h2 id="h-about" data-reveal data-reveal-delay="80">From sonar benches to cloud platforms.</h2>
+        <p class="lede" data-reveal data-reveal-delay="160">I started as an FCC-licensed technician at Raytheon Marine, repairing sonar, Loran C and GPS gear. That habit of tracing a fault to its source never left. Since then I've built e-learning APIs, clinical trial platforms, blockchain wallets and healthcare SaaS, and taught the MERN stack to career-changers at UNH and Penn.</p>
+        <p class="stackline" data-reveal data-reveal-delay="200">TypeScript · Node · React / React Native · Java / Spring · Python · AWS · GCP · Terraform · Docker / Kubernetes · GitHub Actions · Playwright · OpenAI · Anthropic</p>
+        <p class="stackline" data-reveal data-reveal-delay="240">B.S. Computer Science, Rivier University · A.S. Computer Engineering, NH Technical College</p>
       </div>
-      <ol class="line" aria-label="Career">
+      <ol class="line" aria-label="Career" data-reveal data-reveal-delay="200">
         <li><span class="when">2022 – now</span><span class="what">VP of Engineering <span>· Fynn.io</span></span></li>
         <li><span class="when">2019 – now</span><span class="what">Principal Engineer / Consultant <span>· Independent</span></span></li>
         <li><span class="when">2019 – 2022</span><span class="what">Director, Software Engineering <span>· Invicro</span></span></li>
@@ -259,34 +227,34 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   </section>
 
   <section id="contact" aria-labelledby="h-contact">
-    <div class="rail"><b>Contact</b>Open to VP roles</div>
+    <div class="rail" data-reveal><b>Contact</b>Open to VP roles</div>
     <div class="contact-grid">
       <div class="stack">
-        <h2 id="h-contact">Let's talk.</h2>
-        <p class="lede">I'm open to VP of Engineering roles at growth-stage companies, remote first, and to select contract work on mobile apps and agentic AI.</p>
-        <dl class="direct">
+        <h2 id="h-contact" data-reveal data-reveal-delay="80">Let's talk.</h2>
+        <p class="lede" data-reveal data-reveal-delay="160">I'm open to VP of Engineering roles at growth-stage companies, remote first, and to select contract work on mobile apps and agentic AI.</p>
+        <dl class="direct" data-reveal data-reveal-delay="240">
           <div><dt>Email</dt><dd>kristofer.pelchat@gmail.com</dd></div>
-          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/kristofer-pelchat" target="_blank" rel="noopener">linkedin.com/in/kristofer-pelchat ↗</a></dd></div>
-          <div><dt>GitHub</dt><dd><a href="https://github.com/kristoferpelchat" target="_blank" rel="noopener">github.com/kristoferpelchat ↗</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/kristofer-pelchat" target="_blank" rel="noopener">linkedin.com/in/kristofer-pelchat <span class="arrow u" aria-hidden="true">↗</span></a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/kristoferpelchat" target="_blank" rel="noopener">github.com/kristoferpelchat <span class="arrow u" aria-hidden="true">↗</span></a></dd></div>
         </dl>
       </div>
-      <form id="contact-form" novalidate>
+      <form id="contact-form" data-email="kristofer.pelchat@gmail.com" novalidate data-reveal data-reveal-delay="200">
         <div class="row">
           <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
           <label for="f-co">Company<input id="f-co" name="company" autocomplete="organization"></label>
         </div>
         <label for="f-type">Inquiry
           <select id="f-type" name="type">
-            <option>VP / leadership role</option>
-            <option>Contract: mobile app</option>
-            <option>Contract: agentic AI</option>
-            <option>Speaking or advising</option>
-            <option>Something else</option>
+            <option data-phrase="a VP or engineering leadership role">VP / leadership role</option>
+            <option data-phrase="contract work on a mobile app">Contract: mobile app</option>
+            <option data-phrase="contract work on agentic AI">Contract: agentic AI</option>
+            <option data-phrase="a speaking or advising opportunity">Speaking or advising</option>
+            <option data-phrase="something else">Something else</option>
           </select>
         </label>
         <label for="f-msg">Message (optional)<textarea id="f-msg" name="message"></textarea></label>
-        <button class="btn primary" type="submit">Send message →</button>
-        <p class="note">This draft only previews the form. On the live site it will deliver to Kris's inbox.</p>
+        <button class="btn primary" type="submit">Send message <span class="arrow r" aria-hidden="true">→</span></button>
+        <p class="note">This opens a pre-filled draft in your email app, so nothing is sent until you hit send there.</p>
         <p id="status" role="status"></p>
       </form>
     </div>
@@ -300,14 +268,5 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   </div>
 </footer>
 
-<script>
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var name = document.getElementById('f-name');
-  var status = document.getElementById('status');
-  if (!name.value.trim()) { status.textContent = 'Add your name so I know who is writing.'; name.focus(); return; }
-  status.textContent = 'Preview only. On the live site this message goes straight to my inbox.';
-});
-</script>
-
-</body></html>
+</body>
+</html>

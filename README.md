@@ -1,6 +1,6 @@
 # site
 
-Source for my personal website, a single static `index.html` page.
+Source for my personal website: a static page made of `index.html`, `styles.css` and `script.js`, with no build step.
 
 **View it live:** [kristoferpelchat.com](https://kristoferpelchat.com)
 

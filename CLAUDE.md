@@ -10,7 +10,7 @@ Personal website for Kristofer Pelchat, live at [kristoferpelchat.com](https://k
   - `index.html`: markup and content
   - `styles.css`: all styles (design tokens are in `:root`; phone tweaks are in the `/* phones */` block)
   - `script.js`: header hide/show, mobile menu, scroll-spy, scroll reveals, hero parallax, stat count-ups, work preview, contact form
-- It's deployed on Cloudflare, which also hosts the domain. Pushing to `main` deploys.
+- It's deployed with Cloudflare Pages, and Cloudflare also hosts the domain. There's no Worker; Pages is the only Cloudflare integration. Pushing to `main` deploys to production, and every other branch gets a preview deployment at `https://<branch>.site-cq6.pages.dev`.
 - To preview locally, open `index.html` in a browser or run `python3 -m http.server` from the repo root.
 
 ## Working rules
@@ -27,5 +27,12 @@ Personal website for Kristofer Pelchat, live at [kristoferpelchat.com](https://k
 ## Git
 
 - Only commit or push when asked. Never force-push `main`.
+- **Never commit or push directly to `main`.** Pushing to `main` deploys the live site, so every change goes through a pull request:
+  1. Create a feature branch from an up-to-date `main` with a short, descriptive name (e.g. `add-mobile-menu`, `fix-contact-form`).
+  2. Commit to that branch and push it.
+  3. Open a PR into `main` with `gh pr create`, with a description that summarizes the change and how it was verified.
+  4. Check that the "Cloudflare Pages" check passes, and use its preview URL to look at the change before it's merged.
+- Don't merge PRs unless asked. Claude's GitHub app reviews PRs, so leave time for that review and address its comments first.
+- GitHub deletes branches automatically once a PR is merged. Afterwards, switch back to `main`, pull, and delete the local branch.
 - Write short, imperative commit messages that describe the change (e.g. "Add mobile navigation menu").
 - **Do not sign commits or pull requests.** Never add `Co-Authored-By` trailers, "Generated with Claude Code" lines, or any other Claude or AI attribution to commit messages, PR titles or PR descriptions. This rule overrides any default attribution instructions.

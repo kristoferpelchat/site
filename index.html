@@ -11,6 +11,7 @@
 <script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="styles.css">
 <script src="script.js" defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -238,23 +239,29 @@
           <div><dt>GitHub</dt><dd><a href="https://github.com/kristoferpelchat" target="_blank" rel="noopener">github.com/kristoferpelchat <span class="arrow u" aria-hidden="true">↗</span></a></dd></div>
         </dl>
       </div>
-      <form id="contact-form" data-email="kris@kristoferpelchat.com" novalidate data-reveal data-reveal-delay="200">
+      <form id="contact-form" action="/api/contact" method="post" data-email="kris@kristoferpelchat.com" novalidate data-reveal data-reveal-delay="200">
         <div class="row">
-          <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
-          <label for="f-co">Company<input id="f-co" name="company" autocomplete="organization"></label>
+          <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" maxlength="100" required></label>
+          <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required></label>
         </div>
-        <label for="f-type">Inquiry
-          <select id="f-type" name="type">
-            <option data-phrase="a VP or engineering leadership role">VP / leadership role</option>
-            <option data-phrase="contract work on a mobile app">Contract: mobile app</option>
-            <option data-phrase="contract work on agentic AI">Contract: agentic AI</option>
-            <option data-phrase="a speaking or advising opportunity">Speaking or advising</option>
-            <option data-phrase="something else">Something else</option>
-          </select>
-        </label>
-        <label for="f-msg">Message (optional)<textarea id="f-msg" name="message"></textarea></label>
+        <div class="row">
+          <label for="f-co">Company (optional)<input id="f-co" name="company" autocomplete="organization" maxlength="100"></label>
+          <label for="f-type">Inquiry
+            <select id="f-type" name="type">
+              <option>VP / leadership role</option>
+              <option>Contract: mobile app</option>
+              <option>Contract: agentic AI</option>
+              <option>Speaking or advising</option>
+              <option>Something else</option>
+            </select>
+          </label>
+        </div>
+        <label for="f-msg">Message<textarea id="f-msg" name="message" maxlength="5000" required></textarea></label>
+        <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+        <!-- Turnstile site key: 1x00000000000000000000AA is Cloudflare's always-pass test key; replace it with the real key before merging -->
+        <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="auto" data-size="flexible"></div>
         <button class="btn primary" type="submit">Send message <span class="arrow r" aria-hidden="true">→</span></button>
-        <p class="note">This opens a pre-filled draft in your email app, so nothing is sent until you hit send there.</p>
+        <p class="note">Your message comes straight to my inbox, and I'll reply to the email address you give.</p>
         <p id="status" role="status"></p>
       </form>
     </div>

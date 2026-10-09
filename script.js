@@ -102,30 +102,65 @@
     });
   });
 
-  /* contact form: assemble a mailto: draft */
+  /* contact form: send through the /api/contact Pages Function */
   var form = document.getElementById('contact-form');
   var status = document.getElementById('status');
   var send = form.querySelector('button[type="submit"]');
   var sendLabel = send.innerHTML;
+  var address = form.getAttribute('data-email');
+
+  function say(text, isError, withFallback) {
+    status.textContent = text;
+    status.classList.toggle('is-error', !!isError);
+    if (withFallback) {
+      var a = document.createElement('a');
+      a.href = 'mailto:' + address;
+      a.textContent = address;
+      status.append(' You can also email me at ', a, '.');
+    }
+  }
+  function check() {
+    var f = form.elements;
+    if (!f.name.value.trim()) return [f.name, 'Add your name so I know who is writing.'];
+    if (!f.email.value.trim() || !f.email.checkValidity()) return [f.email, 'Add an email address I can reply to.'];
+    if (!f.message.value.trim()) return [f.message, 'Add a short message.'];
+    return null;
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var name = form.elements.name.value.trim();
-    var company = form.elements.company.value.trim();
-    var message = form.elements.message.value.trim();
-    var topic = form.elements.type.selectedOptions[0];
-    if (!name) { status.textContent = 'Add your name so I know who is writing.'; form.elements.name.focus(); return; }
-    var subject = topic.textContent + ' — ' + name + (company ? ', ' + company : '');
-    var body = 'Hi Kristofer,\n\n' +
-      "I'd like to talk about " + topic.getAttribute('data-phrase') + '.' +
-      (message ? '\n\n' + message : '') +
-      '\n\nThanks,\n' + name + (company ? '\n' + company : '') + '\n';
-    window.location.href = 'mailto:' + form.getAttribute('data-email') +
-      '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    send.textContent = 'Draft ready ✓';
-    status.textContent = "Your email app should open with the draft. If it doesn't, write to " + form.getAttribute('data-email') + '.';
+    var problem = check();
+    if (problem) { say(problem[1], true); problem[0].focus(); return; }
+    send.disabled = true;
+    send.textContent = 'Sending…';
+    say('');
+    fetch(form.action, { method: 'POST', body: new FormData(form) })
+      .then(function (res) { return res.json().catch(function () { return {}; }).then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (r) {
+        if (r.ok) {
+          form.reset();
+          send.textContent = 'Message sent ✓';
+          say("Thanks, your message is on its way. I'll get back to you soon.");
+          return;
+        }
+        send.innerHTML = sendLabel;
+        var field = r.data.field && form.elements[r.data.field];
+        say(r.data.error || 'Something went wrong sending your message.', true, !field);
+        if (field) field.focus();
+      })
+      .catch(function () {
+        send.innerHTML = sendLabel;
+        say("Your message couldn't be sent. Check your connection and try again.", true, true);
+      })
+      .finally(function () {
+        send.disabled = false;
+        if (document.activeElement === document.body) send.focus();
+        if (window.turnstile) window.turnstile.reset();
+      });
   });
   form.addEventListener('input', function () {
+    if (send.disabled) return;
     send.innerHTML = sendLabel;
-    status.textContent = '';
+    say('');
   });
 })();

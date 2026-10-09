@@ -6,12 +6,14 @@ Guidance for Claude Code when working in this repository.
 
 Personal website for Kristofer Pelchat, live at [kristoferpelchat.com](https://kristoferpelchat.com).
 
-- A static site with no build step, package manager or framework:
+- A static site plus one Cloudflare Pages Function, with no build step, package manager or framework:
   - `index.html`: markup and content
   - `styles.css`: all styles (design tokens are in `:root`; phone tweaks are in the `/* phones */` block)
   - `script.js`: header hide/show, mobile menu, scroll-spy, scroll reveals, hero parallax, stat count-ups, work preview, contact form
+  - `functions/api/contact.js`: handles `POST /api/contact`. It validates the form, verifies Cloudflare Turnstile, and sends the email through Resend. It needs the `RESEND_API_KEY` and `TURNSTILE_SECRET_KEY` secrets set in the Pages project; `CONTACT_TO` and `CONTACT_FROM` are optional and default to kris@kristoferpelchat.com.
+  - The public Turnstile site key goes in the `.cf-turnstile` element in `index.html`.
 - It's deployed with Cloudflare Pages, and Cloudflare also hosts the domain. There's no Worker; Pages is the only Cloudflare integration. Pushing to `main` deploys to production, and every other branch gets a preview deployment at `https://<branch>.site-cq6.pages.dev`.
-- To preview locally, open `index.html` in a browser or run `python3 -m http.server` from the repo root.
+- To preview locally, run `npx wrangler pages dev .` from the repo root, which also serves the contact function. Put local secrets in `.dev.vars` (git-ignored). Cloudflare's Turnstile test keys (site key `1x00000000000000000000AA`, secret `1x0000000000000000000000000000000AA`) always pass. For pages without the form, opening `index.html` directly is enough.
 
 ## Working rules
 
@@ -22,7 +24,7 @@ Personal website for Kristofer Pelchat, live at [kristoferpelchat.com](https://k
 - Keep it accessible: semantic markup, visible focus states, keyboard-operable controls, and correct ARIA on interactive widgets.
 - Keep it responsive. Check layouts at mobile widths (~375px) as well as desktop.
 - Make focused changes. Don't rewrite unrelated sections or change copy unless asked.
-- Never commit secrets, API keys or private contact details beyond what's already published on the site.
+- Never commit secrets, API keys or private contact details beyond what's already published on the site. Server-side keys belong in the Pages project's environment variables, never in the code.
 
 ## Git
 

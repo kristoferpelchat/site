@@ -27,5 +27,11 @@ Personal website for Kristofer Pelchat, live at [kristoferpelchat.com](https://k
 ## Git
 
 - Only commit or push when asked. Never force-push `main`.
+- **Never commit or push directly to `main`.** Pushing to `main` deploys the live site, so every change goes through a pull request:
+  1. Create a feature branch from an up-to-date `main` with a short, descriptive name (e.g. `add-mobile-menu`, `fix-contact-form`).
+  2. Commit to that branch and push it.
+  3. Open a PR into `main` with `gh pr create`, with a description that summarizes the change and how it was verified.
+- Don't merge PRs unless asked. Claude's GitHub app reviews PRs, so leave time for that review and address its comments first.
+- GitHub deletes branches automatically once a PR is merged. Afterwards, switch back to `main`, pull, and delete the local branch.
 - Write short, imperative commit messages that describe the change (e.g. "Add mobile navigation menu").
 - **Do not sign commits or pull requests.** Never add `Co-Authored-By` trailers, "Generated with Claude Code" lines, or any other Claude or AI attribution to commit messages, PR titles or PR descriptions. This rule overrides any default attribution instructions.

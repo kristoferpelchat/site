@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Agents belong in the pipeline, not the demo · Kristofer Pelchat</title>
+<meta name="description" content="What three years of delivery data say about putting Claude to work inside an engineering team, and why a person still merges every change.">
+<link rel="canonical" href="https://kristoferpelchat.com/pov/agents-in-the-pipeline">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kristofer Pelchat">
+<meta property="og:url" content="https://kristoferpelchat.com/pov/agents-in-the-pipeline">
+<meta property="og:title" content="Agents belong in the pipeline, not the demo">
+<meta property="og:description" content="What three years of delivery data say about putting Claude to work inside an engineering team, and why a person still merges every change.">
+<meta property="og:image" content="https://kristoferpelchat.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kristofer Pelchat, Engineering leadership and agentic AI: I build the teams and the platforms that ship.">
+<meta property="article:published_time" content="2026-11-23">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0d151c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef0ee" media="(prefers-color-scheme: light)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="../styles.css">
+<script src="../script.js" defer></script>
+</head>
+<body>
+
+<header class="top" id="header">
+  <div class="wrap">
+    <a class="mark" href="../" aria-label="Kristofer Pelchat, home">
+      <svg viewBox="0 0 240 240" aria-hidden="true"><g class="g" stroke-width="10" fill="none"><circle cx="120" cy="120" r="96"/><circle cx="120" cy="120" r="56"/></g><line class="l" x1="120" y1="120" x2="196" y2="44" stroke-width="12" stroke-linecap="round"/><circle class="d" cx="120" cy="120" r="18"/></svg>
+      <span aria-hidden="true">Kristofer <span>Pelchat</span></span>
+    </a>
+    <nav class="primary" aria-label="Primary"><ul>
+      <li><a href="../#work">Work</a></li>
+      <li><a href="../#pov" aria-current="page">Points of view</a></li>
+      <li><a href="../#about">About</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul></nav>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </div>
+</header>
+<nav class="menu" id="menu" aria-label="Mobile"><ul>
+  <li><a href="../#work">Work</a></li>
+  <li><a href="../#pov" aria-current="page">Points of view</a></li>
+  <li><a href="../#about">About</a></li>
+  <li><a href="../#contact">Contact</a></li>
+</ul></nav>
+
+<main class="wrap post" id="top">
+  <article aria-labelledby="h-post">
+    <section class="post-head">
+      <div class="rail" data-reveal><b>Point of view</b>Agentic AI<br><time datetime="2026-11-23">Nov 2026</time></div>
+      <div class="stack">
+        <p class="eyebrow" data-reveal>Three years of delivery data</p>
+        <h1 id="h-post" data-reveal data-reveal-delay="100">Agents belong in the pipeline, not the <em>demo.</em></h1>
+        <p class="lede" data-reveal data-reveal-delay="200">What happened when a SaaS engineering team put Claude inside every repo. Delivery got measurably faster, and <strong>a person still reviews and merges every change.</strong></p>
+        <dl class="readout" data-reveal data-reveal-delay="300">
+          <div><dt>Tickets closed vs year 1</dt><dd>2.6×</dd></div>
+          <div><dt>Bug fix time, cut by</dt><dd>60%</dd></div>
+          <div><dt>Slow tail, cut by</dt><dd>50%</dd></div>
+          <div><dt>Changes reviewed by a person</dt><dd>100%</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-numbers">
+      <div class="rail" data-reveal><b>01</b>The numbers</div>
+      <div class="stack prose" data-reveal data-reveal-delay="80">
+        <h2 id="h-numbers">The numbers, and what they don't say</h2>
+        <p>I compared the same three months every year, so the seasons line up. Over three years, the number of tickets we closed in that window grew about two and a half times.</p>
+        <div class="table-wrap" role="region" aria-labelledby="cap-fall" tabindex="0">
+          <table class="data">
+            <caption id="cap-fall">Same three-month window each year, rounded</caption>
+            <thead><tr><th scope="col"><span class="sr">Measure</span></th><th scope="col">Year 1</th><th scope="col">Year 2</th><th scope="col">Year 3</th><th scope="col">Year 4</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Tickets closed, vs year 1</th><td>1×</td><td>2.4×</td><td>1.5×</td><td class="hi">2.6×</td></tr>
+              <tr><th scope="row">Median time to close</th><td>2 wks</td><td>3.5 wks</td><td>4 wks</td><td class="hi">1.5 wks</td></tr>
+              <tr><th scope="row">Median bug fix</th><td>4 wks</td><td>1.5 wks</td><td>1.5 wks</td><td class="hi">1.5 wks</td></tr>
+              <tr><th scope="row">Closed within 30 days</th><td>60%</td><td>60%</td><td>55%</td><td class="hi">70%</td></tr>
+              <tr><th scope="row">Slowest 10% take</th><td>4.5 mo</td><td>3 mo</td><td>5 mo</td><td class="hi">2.5 mo</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>It wasn't a straight line. Bugs got faster first, dropping to about a week and a half in year two and staying there. Everything else got <em>slower</em> in years two and three as the product grew. Year four is when it all moved together: the most tickets, the fastest median and the shortest slow tail. Today about half of all tickets close within ten days, and more than four in ten close within a week, up from about a third.</p>
+        <p>Ticket counts are only a proxy, so I lean on time to close. The method is the same every year: created-to-resolved time, epics excluded, and bulk backlog cleanups removed by the same rule.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-context">
+      <div class="rail" data-reveal><b>02</b>Context first</div>
+      <div class="stack prose" data-reveal data-reveal-delay="80">
+        <h2 id="h-context">Write the context before the agent</h2>
+        <p>Before Claude writes a line of code in a repo, it reads that repo's <code>CLAUDE.md</code>: a short guide to how the codebase is built and the rules we follow.</p>
+        <ul>
+          <li>Architecture and a module map</li>
+          <li>Build, test and deploy commands</li>
+          <li>Conventions and naming rules</li>
+          <li>Known pitfalls and how to avoid them</li>
+          <li>Guardrails, like a Jira ticket ID on every branch, commit and PR</li>
+        </ul>
+        <p>We're rolling one out to every repo, alongside shared hooks and skills. The payoff goes beyond code that matches our style. A product manager or support lead can ask how a feature actually works and get an answer grounded in the actual code, not a guess.</p>
+        <p>Guardrails live in tooling, not in a wiki. Hooks block work that has no Jira ticket, and Semgrep scans every pull request.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-loop">
+      <div class="rail" data-reveal><b>03</b>The loop</div>
+      <div class="stack prose" data-reveal data-reveal-delay="80">
+        <h2 id="h-loop">Anyone can do any step but one</h2>
+        <p>Every step of a ticket's life can be done by a person, by Claude, or both. Merging is the exception.</p>
+        <ol class="flow">
+          <li><span class="step">Ticket</span><span class="what">Written and refined by a person or Claude</span><span class="who">Person · Claude</span></li>
+          <li><span class="step">Implement</span><span class="what">Code and tests from the ticket and the repo's context</span><span class="who">Person · Claude</span></li>
+          <li><span class="step">Pull request</span><span class="what">Opened with the Jira ticket ID</span><span class="who">Person · Claude</span></li>
+          <li><span class="step">Review</span><span class="what">Claude in CI, and an engineer every time</span><span class="who">Person · Claude</span></li>
+          <li class="human"><span class="step">Merge</span><span class="what">Only an engineer can merge</span><span class="who">Person</span></li>
+          <li><span class="step">QA</span><span class="what">Tested and verified by a person before release</span><span class="who">Person · Claude</span></li>
+        </ol>
+        <p>Nothing merges on its own. Automation opens pull requests; people decide what ships.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-agent">
+      <div class="rail" data-reveal><b>04</b>In production</div>
+      <div class="stack prose" data-reveal data-reveal-delay="80">
+        <h2 id="h-agent">The Playwright agent, running for real</h2>
+        <p>Our clearest example is a QA agent. Every two hours it picks up Jira tickets that are done, writes a Playwright test and a matching test case for each, and opens a pull request. A QA engineer reviews every test before it merges.</p>
+        <dl class="readout three">
+          <div><dt>Opens test PRs every</dt><dd>2 hrs</dd></div>
+          <div><dt>Merged after review</dt><dd>~80%</dd></div>
+          <div><dt>In production</dt><dd>6 wks</dd></div>
+        </dl>
+        <p>On mobile, a second agent plans Maestro tests for app tickets. Writing those tests is the next step. Claude also reviews pull requests automatically in CI, and a set of shared plugins packages common jobs as skills.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-human">
+      <div class="rail" data-reveal><b>05</b>The human part</div>
+      <div class="stack prose" data-reveal data-reveal-delay="80">
+        <h2 id="h-human">Where the agent still needs a person</h2>
+        <ul>
+          <li><strong>Merging.</strong> Always a person, with no exceptions for small changes.</li>
+          <li><strong>Review.</strong> An engineer reviews every pull request, whether a person or Claude wrote it.</li>
+          <li><strong>Release.</strong> QA can use Claude to write and run tests, but a person verifies before anything ships.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-takeaways">
+      <div class="rail" data-reveal><b>06</b>Takeaways</div>
+      <div class="stack prose" data-reveal data-reveal-delay="80">
+        <h2 id="h-takeaways">If you're starting this on your team</h2>
+        <ul>
+          <li>Write the context file before you write the agent.</li>
+          <li>Put guardrails in hooks and CI, where they run every time.</li>
+          <li>Measure time to close over the same window each year, not just ticket counts.</li>
+          <li>Let agents open pull requests. Keep the merge button human.</li>
+        </ul>
+        <p class="post-foot"><a class="btn" href="../#pov"><span class="arrow l" aria-hidden="true">←</span> All points of view</a></p>
+      </div>
+    </section>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Brookline, NH · leading teams across the U.S. and India</span>
+    <span>© 2026 Kristofer Pelchat</span>
+  </div>
+</footer>
+
+</body>
+</html>

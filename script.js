@@ -91,6 +91,7 @@
 
   /* contact form: assemble a mailto: draft */
   var form = document.getElementById('contact-form');
+  if (!form) return;
   var status = document.getElementById('status');
   var send = form.querySelector('button[type="submit"]');
   var sendLabel = send.innerHTML;
